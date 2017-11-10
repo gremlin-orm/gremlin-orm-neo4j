@@ -37,8 +37,4 @@ globals << [hook : [
 ] as LifeCycleHook]
 
 // define the default TraversalSource to bind queries to - this one will be named "g".
-//
-// globals << [graph = Neo4jGraph.open("/data/databases/graph.db/")]
 globals << [g : graph.traversal() ]
-
-// 

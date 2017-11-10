@@ -39,15 +39,9 @@ At the time of writing, Gremlin has difficulties operating on a database generat
 
 You can skip this step if you are working with Docker Compose.
 
-    docker pull mrsaints/gremlin-console-neo4j
-    docker pull mrsaints/gremlin-server-neo4j
+    docker pull gremlinorm/gremlin-console-neo4j
+    docker pull gremlinorm/gremlin-server-neo4j
 
-
-## Usage
-
-### Docker
-
-To be added.
 
 ### Docker Compose
 

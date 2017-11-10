@@ -1,18 +1,18 @@
 FROM openjdk:8-alpine
-MAINTAINER Ian Lai <os@fyianlai.com>
+MAINTAINER gremlinorm <https://github.com/gremlin-orm>
 
-ARG GREMLIN_VERSION=3.2.1
+ARG GREMLIN_VERSION=3.2.6
 
 ARG BUILD_DATE
 ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/MrSaints/docker-gremlin-neo4j"
+      org.label-schema.vcs-url="https://github.com/gremlin-orm/gremlin-orm-neo4j"
 
 RUN apk add --update bash coreutils && rm -rf /var/cache/apk/* && \
-    wget -O /tmp/gremlin-console.zip http://mirror.catn.com/pub/apache/tinkerpop/$GREMLIN_VERSION/apache-gremlin-console-$GREMLIN_VERSION-bin.zip && \
+    wget -O /tmp/gremlin-console.zip http://mirror.catn.com/pub/apache/tinkerpop/$GREMLIN_VERSION/apache-tinkerpop-gremlin-console-$GREMLIN_VERSION-bin.zip && \
     unzip /tmp/gremlin-console.zip -d / && \
-    mv /apache-gremlin-console-$GREMLIN_VERSION/ /gremlin-console/ && \
+    mv /apache-tinkerpop-gremlin-console-$GREMLIN_VERSION/ /gremlin-console/ && \
     chmod +x /gremlin-console/bin/gremlin.sh && \
     rm /tmp/gremlin-console.zip
 
