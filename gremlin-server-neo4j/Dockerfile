@@ -1,7 +1,7 @@
 FROM openjdk:8-alpine
-MAINTAINER gremlin-orm <https://github.com/gremlin-orm>
+MAINTAINER gremlinorm <https://github.com/gremlin-orm>
 
-ARG GREMLIN_VERSION=3.2.1
+ARG GREMLIN_VERSION=3.2.6
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -10,9 +10,9 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/gremlin-orm/gremlin-orm-neo4j"
 
 RUN apk add --update bash && rm -rf /var/cache/apk/* && \
-    wget -O /tmp/gremlin-server.zip http://mirror.catn.com/pub/apache/tinkerpop/$GREMLIN_VERSION/apache-gremlin-server-$GREMLIN_VERSION-bin.zip && \
+    wget -O /tmp/gremlin-server.zip http://mirror.catn.com/pub/apache/tinkerpop/$GREMLIN_VERSION/apache-tinkerpop-gremlin-server-$GREMLIN_VERSION-bin.zip && \
     unzip /tmp/gremlin-server.zip -d / && \
-    mv /apache-gremlin-server-$GREMLIN_VERSION/ /gremlin-server/ && \
+    mv /apache-tinkerpop-gremlin-server-$GREMLIN_VERSION/ /gremlin-server/ && \
     chmod +x /gremlin-server/bin/gremlin-server.sh && \
     rm /tmp/gremlin-server.zip
 

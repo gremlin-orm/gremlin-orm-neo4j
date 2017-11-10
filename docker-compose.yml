@@ -1,7 +1,7 @@
 version: "2"
 services:
   gremlin-console:
-    image: gremlin-orm/gremlin-console-neo4j
+    image: gremlinorm/gremlin-console-neo4j
     # build:
     #   context: ./gremlin-console-neo4j
     #   dockerfile: Dockerfile
@@ -16,7 +16,7 @@ services:
       - gremlin-server
 
   gremlin-server:
-    image: gremlin-orm/gremlin-server-neo4j
+    image: gremlinorm/gremlin-server-neo4j
     # build:
     #   context: ./gremlin-server-neo4j
     #   dockerfile: Dockerfile
@@ -29,7 +29,7 @@ services:
       - ./gremlin-server-neo4j/scripts/empty.groovy:/gremlin-server/scripts/empty.groovy
 
   neo4j-server:
-    image: gremlin-orm/neo4j:2.3
+    image: neo4j:2.3
     environment:
       # - NEO4J_AUTH=neo4j/pass
       - NEO4J_AUTH=none
