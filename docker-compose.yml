@@ -2,9 +2,6 @@ version: "2"
 services:
   gremlin-console:
     image: gremlinorm/gremlin-console-neo4j
-    # build:
-    #   context: ./gremlin-console-neo4j
-    #   dockerfile: Dockerfile
     volumes:
       - ./data/:/data/
       - ./gremlin-console-neo4j/conf/remote-docker-compose.yml:/gremlin-console/conf/remote-docker-compose.yml
@@ -17,16 +14,25 @@ services:
 
   gremlin-server:
     image: gremlinorm/gremlin-server-neo4j
-    # build:
-    #   context: ./gremlin-server-neo4j
-    #   dockerfile: Dockerfile
+    container_name: gremlin-server
     ports:
       - "8182:8182"
     volumes:
-      - ./data/graph.db:/data/
+      - ./data/:/data/
       - ./gremlin-server-neo4j/conf/gremlin-server-custom.yml:/gremlin-server/conf/gremlin-server-custom.yml
       - ./gremlin-server-neo4j/conf/neo4j.properties:/gremlin-server/conf/neo4j.properties
-      - ./gremlin-server-neo4j/scripts/empty.groovy:/gremlin-server/scripts/empty.groovy
+      - ./gremlin-server-neo4j/scripts/neo4j.groovy:/gremlin-server/scripts/neo4j.groovy
+
+  gremlin-test-server:
+    image: gremlinorm/gremlin-server-neo4j
+    container_name: gremlin-test-server
+    ports:
+      - "8182:8182"
+    volumes:
+      - ./data/:/data/
+      - ./gremlin-server-neo4j/conf/gremlin-server-custom.yml:/gremlin-server/conf/gremlin-server-custom.yml
+      - ./gremlin-server-neo4j/conf/neo4j-test.properties:/gremlin-server/conf/neo4j.properties
+      - ./gremlin-server-neo4j/scripts/neo4j.groovy:/gremlin-server/scripts/neo4j.groovy    
 
   neo4j-server:
     image: neo4j:2.3
@@ -37,4 +43,4 @@ services:
       - "7474:7474" # HTTP
       - "7687:7687" # Bolt
     volumes:
-      - ./data/:/data/
+      - ./data/copy:/data/

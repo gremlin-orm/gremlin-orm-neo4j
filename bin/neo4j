@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Copying Database to new location '/data/copy/"
+sudo rm -r data/copy 
+sudo mkdir data/copy
+sudo cp -r ./data/neo4j/* ./data/copy
+
+echo "Neo4j Server Starting..."
+
+docker-compose run --rm --service-ports neo4j-server
+
+echo "Neo4j Server Started"

@@ -76,6 +76,18 @@ See [Docker Compose docs][docker-compose-docs] for more information.
     docker-compose run --rm --service-ports neo4j-server
 
 
+## Useful Scripts For Starting Services
+
+From the gremlin-orm-neo4j root directory.
+
+```./bin/server``` Will start the Gremlin server running ready for connection with Gremlin-Orm
+
+```./bin/neo4j``` Will start the Neo4j server running on localhost:7474. Before doing this it creates a copy of your database - It 
+                  is this copy you are browsing (No changes will take effect). See 'Known Issues'
+
+```./bin/testserver``` Will start the Gremlin server running on a test database ready for connection with Gremlin-Orm Test suite
+
+
 ## Development
 
 `grapeConfig.xml` is needed by the Gremlin Console, and Server to install the `neo4j-gremlin` plugin.
