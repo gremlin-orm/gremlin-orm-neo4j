@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Gremlin Test Server Starting..."
+
+docker-compose run --rm --service-ports gremlin-test-server
+
+echo "Gremlin Test Server Started"

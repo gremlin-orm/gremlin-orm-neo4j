@@ -23,11 +23,8 @@ RUN /bin/bash -c "/gremlin-server/bin/gremlin-server.sh -i org.apache.tinkerpop 
 
 COPY ./conf/gremlin-server-custom.yml /gremlin-server/conf/gremlin-server-custom.yml
 COPY ./conf/neo4j.properties /gremlin-server/conf/neo4j.properties
-COPY ./scripts/empty.groovy /gremlin-server/scripts/empty.groovy
+COPY ./scripts/neo4j.groovy /gremlin-server/scripts/neo4j.groovy
 
 CMD ["/bin/bash", "/gremlin-server/bin/gremlin-server.sh", "conf/gremlin-server-custom.yml", "-i", "init.groovy"]
-
-# /gremlin-server/bin/gremlin-server.sh
-# command: "/bin/bash /gremlin-console/bin/gremlin.sh -i init.groovy"
 
 EXPOSE 8182
